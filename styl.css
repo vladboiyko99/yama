@@ -21,7 +21,7 @@ body{
 	background:#ffffff;
 	width:40%;
 	margin:10px  auto 10px auto;
-	height:370px; /* высота нашего блока */
+	height:800px; /* высота нашего блока */
 	overflow: auto; /* свойство для прокрутки по горизонтали. Автоматом, если больше блока */
 	
 }
@@ -36,7 +36,7 @@ body{
 .form {
 	
 	
-	margin: 15px auto 0px auto;
+	margin: 30px auto 0px auto;
 	width:80%;
 	height:80%;
 	box-sizing:border-box;
@@ -51,7 +51,7 @@ body{
 .form form {
 	
 	  height:300px;
-	  width:70%;
+	  width:60%;
 	  margin:auto;
 	  box-sizing:border-box;
 	  padding:10px;
@@ -84,7 +84,7 @@ body{
 .form textarea{
     background: rgba(255, 255, 255, 0.4); 
     width:100%;
-    height:80px;
+    height:100px;
     border:rgba(0,0,0,.3) 2px solid;
     box-sizing:border-box;
     -moz-border-radius: 3px;
@@ -156,9 +156,9 @@ article footer {
 
 .footer{
 	
-	
+	margin-top:15px;
 	background:#f5f5f5;
-	position:absolute;
+	position:static;
 	top:100%;
 	width:100%;
 	padding:10px;
@@ -521,12 +521,6 @@ body {
     transition: width .5s ease;
 }
 
-
-/**
- * анимируем линию подчеркивания 
- * ссылок при наведении
- */
-
 .nav > ul > li > a:hover:before {
     width: 0%;
     background: #f5f5f5;
@@ -541,31 +535,32 @@ body {
     transition: width 0s ease;
 }
 
-
-/* фон затемнения на основной контент 
- * при этом элементы блокируютя
- * спорная такая фича, если оно вам надо
- * просто раскомментируйте
-*/
-
-/*
-.mask-content {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    visibility: hidden;
-    opacity: 0;
+#slideout {
+  position: fixed;
+  top: 80%;
+  left: 0;
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
 }
 
-[id='nav-toggle']:checked ~ .mask-content {
-    visibility: visible;
-    opacity: 1;
-    -webkit-transition: opacity .5s, visibility .5s;
-    transition: opacity .5s, visibility .5s;
+#slideout_inner {
+  position: fixed;
+  top:55%;
+  left: -100%;
+  width:90%;
+  margin:0px 0px 0px 5%; 
+  -webkit-transition-duration: 1s;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  transition-duration: 1s;
 }
-*/
+
+#slideout:hover {
+  left: 60%;
+}
+
+#slideout:hover #slideout_inner {
+  left: 10px;
+}
