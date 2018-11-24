@@ -15,10 +15,22 @@ class Page{
 		
 		$query = "SELECT * from mess ORDER by id DESC";
 		$method = "all";
-		$db = new Db (HOST,USER,PASS,DB);
+		$db = new DataBase (HOST,USER,PASS,DB);
 		$myrow = $db->select_db ($query,$method);
 		return $myrow;
 		
+		
+	}
+	
+	public function sidebar (){
+		
+		include 'sidebar.php';
+		
+	}
+	
+	public function form (){
+		
+		include 'form.php';
 		
 	}
 
@@ -28,7 +40,7 @@ class Page{
 		return $yer;
 		
 	}	
-
+	
 }
 
 

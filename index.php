@@ -3,6 +3,7 @@ header ('Content-Type: text/html; charset=utf-8');
 ob_start ();
 include "include.php";
 include "creat_ob.php";
+$data->transferpost ($_POST);
 ?>
 <!DOCTYPE HTML>
 <html lang="ru">
@@ -18,22 +19,7 @@ include "creat_ob.php";
 </head>	
 <body>
 
-<input type="checkbox" id="nav-toggle" hidden>
-    <nav class="nav">
-        <label for="nav-toggle" class="nav-toggle" onclick></label>
-        <h2 class="logo"> 
-            <a href="">pit.ru</a> 
-        </h2>
-        <ul>
-            <li><a href="#1">Один</a>
-            <li><a href="#2">Два</a>
-            <li><a href="#3">Три</a>
-            <li><a href="#4">Четыре</a>
-            <li><a href="#5">Пять</a>
-            <li><a href="#6">Шесть</a>
-            <li><a href="#7">Семь</a> 
-        </ul>
-    </nav>
+<?php $page->sidebar();?>
 
   <header class = 'hader'>
    <?php $page->head (); ?>
@@ -44,41 +30,20 @@ include "creat_ob.php";
 	<?if (empty($myrow)) : ?>
 		<p>Нет записей</p>
 	<? else : ?>
-		<?php $data->foreach_mess  ($myrow);?>
+		<?foreach ($myrow as $key=>$vol):?>
+			
+			<br><article>
+			<header><?=$myrow[$key]['user']?></header>
+			<p><?=$myrow[$key]['text']?></p>
+			<footer><?=$myrow[$key]['data']?></footer>
+			</article>
+			
+		<?endforeach;?>
 	<? endif ; ?>
    </div>
     
 	
-<div id="slideout">
-  <img src="img/nap.png" alt="Отправить отзыв" width = "10%" />
-  <div id="slideout_inner">
-    <? if ( isset($_SESSION['login']) and  isset($_SESSION['password'])) :?>
-		<div class = "form">
-			<form method = 'POST' action = 'index.php'>
-			<h2>Текст </h2>
-			<br>
-			<textarea name = 'text'></textarea>
-			<br><br>
-			<button type = 'submit' name = 'submit'>Отправить</button>
-			</form>
-		</div>
-	<? else :?>
-		<div class = "form">
-			<form method = 'POST' action = 'index.php'>
-			<h2>Логин </h2>
-			<input type = "text" name = "login">
-			<br><br>
-			<h2>Пароль </h2>
-			<input type = "text" name = "password">
-			<br><br>
-			<button type = 'submit' name = 'submit'>Войти</button> 
-			<br><br>
-			<button type = 'submit' name = 'submit'>Зарегистрироваться</button>
-			</form>
-		</div>
-	<? endif ;?>		
-  </div>
-</div>
+<?php $page->form(); ?>
 	
 	
   
